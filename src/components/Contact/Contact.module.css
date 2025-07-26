@@ -1,0 +1,49 @@
+.contact {
+  padding: 4rem 1rem;
+  background: #fff;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+input,
+textarea {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+}
+input:focus,
+textarea:focus {
+  border-color: #ef233c;
+  outline: none;
+}
+button {
+  padding: 0.8rem 1rem;
+  background: #ef233c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+button:hover {
+  background: #d90429;
+}
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+}

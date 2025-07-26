@@ -1,0 +1,39 @@
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contactInfo {
+  margin: 1rem 0;
+}
+.contactInfo a {
+  color: #ef233c;
+  text-decoration: none;
+}
+.social {
+  margin: 1rem 0;
+}
+.social a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+.social a:hover {
+  color: #ef233c;
+}
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+p {
+  margin: 0.3rem 0;
+}
+a {
+  text-decoration: none;
+}
