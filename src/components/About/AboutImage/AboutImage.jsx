@@ -1,12 +1,29 @@
+// src/components/About/AboutImage.jsx
 import React from "react";
-import styles from "../About.module.css";
+import styles from "./About.module.css";
 
-const AboutImage = () => (
-  <div className={styles.aboutImg} data-aos="zoom-in">
-    <div className={styles.imageCard}>
-      <img src="/img/about.jpg" alt="About Me" />
+const AboutImage = () => {
+  return (
+    <div className={styles.aboutImg} data-aos="zoom-in">
+      <a
+        href="https://github.com/OlehBilenkyi"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.iframeWrapper}
+      >
+        <div className={styles.githubPreview}>
+          <img
+            src="/img/httpsgithub.comOlehBilenkyi.jpg" // ← свой скриншот GitHub-профиля
+            alt="GitHub Preview"
+            className={styles.previewImage}
+          />
+        </div>
+        <div className={styles.overlay}>
+          <p>Click to view my GitHub</p>
+        </div>
+      </a>
     </div>
-  </div>
-);
+  );
+};
 
 export default AboutImage;

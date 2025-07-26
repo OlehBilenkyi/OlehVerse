@@ -1,0 +1,44 @@
+.aboutImg {
+  position: relative;
+  flex: 1 1 50%;
+  padding: var(--gutter);
+  text-align: center;
+}
+
+.iframeWrapper {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.githubPreview {
+  background-image: url("/img/github-preview.png"); /* скриншот твоей страницы */
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: 100%;
+  transition: background-position 2s ease;
+}
+
+.iframeWrapper:hover .githubPreview {
+  background-position: bottom;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  pointer-events: none;
+}
