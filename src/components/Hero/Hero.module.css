@@ -1,14 +1,27 @@
-/* Hero.module.css */
-
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
   background: linear-gradient(120deg, #e3f2fd 0%, #ffffff 100%);
   padding: calc(var(--spacer) * 4) 0;
 }
 
+.parallaxLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/img/particles.svg") center/cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -26,20 +39,45 @@
 .heroText p {
   font-size: var(--fs-md);
   color: var(--color-secondary);
-  font-weight: 400;
   margin: 0;
 }
 
-.heroText h1 {
+.gradientText {
   font-size: var(--fs-xxl);
-  color: var(--color-primary);
   margin: 0.5rem 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 4s ease infinite;
 }
 
-.heroText .typed {
+@keyframes textGradient {
+  0%,
+  100% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+}
+
+.typed {
+  display: inline-block;
   font-size: var(--fs-lg);
   color: var(--color-muted);
   margin-bottom: 1.5rem;
+  line-height: 1.3em;
+  white-space: nowrap;
+  vertical-align: top;
+
+  /* 🛠 фикс дергания текста */
+  min-height: 1.3em;
+  position: relative;
 }
 
 .heroBtn {
@@ -48,43 +86,97 @@
   flex-wrap: wrap;
 }
 
-.heroBtn a {
+.heroBtn a,
+.heroBtn button {
   padding: 0.75rem 1.5rem;
   font-size: var(--fs-md);
   font-weight: 600;
   border-radius: 50px;
-  background: var(--color-primary);
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  background-size: 200% 200%;
   color: #fff;
-  transition: background var(--speed-fast) var(--ease),
-    transform var(--speed-fast) var(--ease);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.5s var(--ease), transform 0.3s var(--ease);
 }
 
-.heroBtn a:hover {
-  background: var(--color-accent);
-  transform: translateY(-3px);
+.heroBtn a:hover,
+.heroBtn button:hover {
+  background-position: 100% 0;
+  transform: translateY(-4px) scale(1.05);
+}
+
+.cvBtn {
+  background: linear-gradient(
+    45deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+}
+
+.downloadBtn {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  transition: all 0.3s var(--ease);
+}
+
+.downloadBtn:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  color: #fff;
 }
 
 .heroImage {
-  text-align: center;
-}
-
-.heroImage img {
+  clip-path: ellipse(60% 80% at 50% 50%);
   max-width: 100%;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
-/* Если нужно локально перебить глобальные .container-fluid / .row / .col-* */
-.containerFluid {
-  width: 100%;
-  padding: 0;
+.modalFooter {
+  text-align: center;
+  margin-top: 1rem;
 }
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
+:global(.typed-cursor) {
+  display: inline-block;
+  margin-left: 4px;
+  width: 2px;
+  height: 1.3em;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  animation: flicker-blink 0.9s infinite ease-in-out;
+  border-radius: 2px;
+  vertical-align: middle;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 6px var(--color-primary);
 }
-.col {
-  flex: 1 1 50%;
-  padding: 0;
+
+@keyframes flicker-blink {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999% {
+    opacity: 0;
+  }
 }
