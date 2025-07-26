@@ -17,7 +17,12 @@ import BackToTop from "./components/BackToTop/BackToTop";
 
 function App() {
   useEffect(() => {
-    AOS.init({ once: true, duration: 1000 });
+    AOS.init({
+      duration: 1000,
+      once: false, // ✅ Анимация будет повторяться при каждом появлении в viewport
+      mirror: true, // (по желанию) — анимация и при скролле вверх
+    });
+
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
@@ -30,10 +35,10 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Services />
         <Experience />
         {/* <ResumeBlock /> */}
         <Portfolio />
+        <Services />
         <Contact />
       </main>
 
