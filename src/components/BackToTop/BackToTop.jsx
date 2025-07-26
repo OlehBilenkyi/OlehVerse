@@ -1,6 +1,7 @@
 // src/components/BackToTop.jsx
 import React, { useEffect, useState } from "react";
-import styles from "../assets/styles/BackToTop.module.css";
+import styles from "./BackToTop.module.css";
+
 
 const BackToTop = () => {
   const [visible, setVisible] = useState(false);

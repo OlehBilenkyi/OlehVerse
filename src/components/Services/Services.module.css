@@ -1,0 +1,100 @@
+/* Services.module.css */
+
+.service {
+  padding: 100px 0;
+  background: #f7f9fc;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 1s ease forwards;
+}
+
+.sectionHeader p {
+  color: #4d7cfe;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.sectionHeader h2 {
+  font-size: 36px;
+  color: #1e293b;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.serviceItem {
+  flex: 1 1 45%;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.serviceItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.serviceIcon {
+  font-size: 42px;
+  color: #4d7cfe;
+  margin-bottom: 20px;
+}
+
+.serviceText h3 {
+  font-size: 22px;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.serviceText p {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .serviceItem {
+    flex: 1 1 100%;
+  }
+
+  .sectionHeader h2 {
+    font-size: 28px;
+  }
+}

@@ -1,7 +1,6 @@
 // src/components/Loader.jsx
 import React from "react";
-import "../assets/styles/style.css"; // если нужен глобальный стиль
-
+import styles from "./Loader.module.css";
 const Loader = () => {
   return (
     <div id="loader" className="show">

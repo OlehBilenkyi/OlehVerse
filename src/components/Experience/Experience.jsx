@@ -1,5 +1,6 @@
 // src/components/Experience.jsx
 import React from "react";
+import styles from "./Experience.module.css";
 
 const experiences = [
   {

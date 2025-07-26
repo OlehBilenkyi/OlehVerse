@@ -1,0 +1,96 @@
+/* Navbar.module.css */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.containerFluid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.navbarBrand {
+  font-size: 26px;
+  font-weight: bold;
+  color: #0077b6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbarBrand:hover {
+  color: #023e8a;
+}
+
+.navbarToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.navbarCollapse {
+  display: flex;
+  gap: 25px;
+}
+
+.navItem {
+  list-style: none;
+}
+
+.navLink {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: #0077b6;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #0077b6;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbarToggle {
+    display: block;
+  }
+
+  .navbarCollapse {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .navbarCollapse.open {
+    display: flex;
+  }
+}

@@ -1,0 +1,136 @@
+/* Experience.module.css */
+
+.experience {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.sectionHeader p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0077b6;
+  margin: 0;
+}
+
+.sectionHeader h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #023e8a;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #0077b6;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timelineItem {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+  animation: slideInUp 0.8s ease;
+}
+
+.timelineItem.left {
+  left: 0;
+}
+
+.timelineItem.right {
+  left: 50%;
+}
+
+.timelineItem::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-color: #0077b6;
+  border: 4px solid #fff;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineItem.right::after {
+  left: -13px;
+}
+
+.timelineText {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.timelineText:hover {
+  transform: translateY(-5px);
+  background: #eaf6ff;
+}
+
+.timelineDate {
+  font-weight: bold;
+  color: #0077b6;
+  margin-bottom: 10px;
+}
+
+.timelineText h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #023e8a;
+}
+
+.timelineText h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.timelineText p {
+  font-size: 15px;
+  color: #666;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
