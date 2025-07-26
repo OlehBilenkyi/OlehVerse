@@ -1,100 +1,102 @@
-/* Services.module.css */
+/* src/components/Services/Services.module.css */
 
 .service {
-  padding: 100px 0;
-  background: #f7f9fc;
+  background: var(--bg-section);
+  padding: calc(var(--spacer) * 4) 0;
 }
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 50px;
-  animation: fadeInDown 1s ease forwards;
+  margin-bottom: calc(var(--spacer) * 2);
 }
-
 .sectionHeader p {
-  color: #4d7cfe;
+  color: var(--color-secondary);
   font-weight: 600;
-  letter-spacing: 2px;
-  font-size: 18px;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: calc(var(--spacer) / 2);
 }
-
 .sectionHeader h2 {
-  font-size: 36px;
-  color: #1e293b;
-  margin-top: 10px;
-  font-weight: 800;
+  font-size: var(--fs-xxl);
+  color: var(--color-dark);
+  position: relative;
+  display: inline-block;
+}
+.sectionHeader h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: var(--spacer) auto 0;
 }
 
+/* Сетка сервисов */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: calc(var(--spacer) * 2);
 }
 
+/* Один блок услуги */
 .serviceItem {
-  flex: 1 1 45%;
   background: #fff;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1s ease forwards;
+  border-radius: 12px;
+  padding: calc(var(--spacer) * 2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform var(--speed-fast) var(--ease),
+    box-shadow var(--speed-fast) var(--ease);
+  opacity: 0;
+  /* Для wow.js: */
+  /* Добавляйте className="wow fadeInUp" на каждый .serviceItem с data-wow-delay */
 }
-
 .serviceItem:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Иконка */
 .serviceIcon {
-  font-size: 42px;
-  color: #4d7cfe;
-  margin-bottom: 20px;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto calc(var(--spacer));
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.75rem;
+  transition: background var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease);
+}
+.serviceItem:hover .serviceIcon {
+  background: var(--color-accent);
+  transform: scale(1.1);
 }
 
+/* Текст */
 .serviceText h3 {
-  font-size: 22px;
-  color: #1e293b;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: var(--fs-lg);
+  color: var(--color-dark);
+  margin-bottom: calc(var(--spacer) / 2);
 }
-
 .serviceText p {
-  font-size: 16px;
-  color: #6b7280;
-  line-height: 1.6;
+  font-size: var(--fs-md);
+  color: var(--color-muted);
+  line-height: 1.5;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Анимация входа (если не используете wow.js, можно включать через JS/IntersectionObserver) */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .serviceItem {
-    flex: 1 1 100%;
-  }
-
-  .sectionHeader h2 {
-    font-size: 28px;
   }
 }

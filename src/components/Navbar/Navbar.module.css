@@ -3,94 +3,87 @@
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 999;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.containerFluid {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100%;
+  background: var(--bg-section);
+  padding: 0 var(--gutter);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 900;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 70px;
+  justify-content: space-between;
+  transition: background var(--speed) var(--ease);
 }
 
-.navbarBrand {
-  font-size: 26px;
-  font-weight: bold;
-  color: #0077b6;
+.brand {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.navbarBrand:hover {
-  color: #023e8a;
-}
-
-.navbarToggle {
+.toggle {
   display: none;
+  font-size: 1.5rem;
   background: none;
   border: none;
-  font-size: 24px;
+  color: var(--color-dark);
   cursor: pointer;
 }
 
-.navbarCollapse {
+.navLinks {
   display: flex;
-  gap: 25px;
+  gap: var(--gutter);
 }
 
-.navItem {
-  list-style: none;
-}
-
-.navLink {
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
+.link {
   position: relative;
-  padding: 8px 0;
-  transition: color 0.3s ease;
+  font-size: var(--fs-md);
+  color: var(--color-dark);
+  text-decoration: none;
+  padding: var(--spacer) 0;
+  transition: color var(--speed-fast) var(--ease);
 }
 
-.navLink:hover,
-.navLink.active {
-  color: #0077b6;
-}
-
-.navLink::after {
+.link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  height: 2px;
+  bottom: -4px;
   width: 0;
-  background-color: #0077b6;
-  transition: width 0.3s ease;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--speed-fast) var(--ease);
 }
 
-.navLink:hover::after {
+.link:hover,
+.active {
+  color: var(--color-primary);
+}
+
+.link:hover::after,
+.active::after {
   width: 100%;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .navbarToggle {
+  .toggle {
     display: block;
   }
-
-  .navbarCollapse {
-    display: none;
+  .navLinks {
+    position: fixed;
+    top: 100%;
+    right: 0;
+    width: 240px;
+    max-width: 80%;
+    background: var(--bg-section);
     flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
+    padding: var(--spacer);
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform var(--speed-fast) var(--ease);
   }
-
-  .navbarCollapse.open {
-    display: flex;
+  .navLinks.open {
+    transform: translateX(0);
   }
 }

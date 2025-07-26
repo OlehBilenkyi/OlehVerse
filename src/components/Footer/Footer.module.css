@@ -1,39 +1,70 @@
+/* Footer.module.css */
+
 .footer {
-  background: #111;
-  color: #fff;
-  padding: 3rem 1rem;
+  background: var(--color-dark);
+  color: var(--color-light);
+  padding: calc(var(--spacer) * 2) 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
   text-align: center;
 }
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+
+.title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacer);
+  letter-spacing: 1px;
 }
+
+.subtitle {
+  font-size: var(--fs-md);
+  color: var(--color-muted);
+  margin-bottom: calc(var(--spacer) * 1.5);
+}
+
 .contactInfo {
-  margin: 1rem 0;
+  margin-bottom: var(--spacer);
 }
+
+.contactInfo p {
+  margin: 0.25rem 0;
+  font-size: var(--fs-sm);
+  color: var(--color-light);
+}
+
 .contactInfo a {
-  color: #ef233c;
-  text-decoration: none;
+  color: var(--color-primary);
+  transition: color var(--speed-fast) var(--ease);
 }
+
+.contactInfo a:hover {
+  color: var(--color-accent);
+}
+
 .social {
-  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacer);
+  margin-bottom: var(--spacer);
 }
+
 .social a {
-  margin: 0 10px;
-  color: #fff;
   font-size: 1.5rem;
-  transition: color 0.3s ease;
+  color: var(--color-light);
+  transition: color var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease);
 }
+
 .social a:hover {
-  color: #ef233c;
+  color: var(--color-accent);
+  transform: translateY(-3px);
 }
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
-}
-p {
-  margin: 0.3rem 0;
-}
-a {
-  text-decoration: none;
+
+.copyright {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
 }

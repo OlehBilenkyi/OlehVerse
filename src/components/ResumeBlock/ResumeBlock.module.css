@@ -1,99 +1,95 @@
-/* ResumeBlock.module.css */
+/* src/components/ResumeBlock/ResumeBlock.module.css */
 
 .resumeBlock {
-  background: linear-gradient(135deg, #f0f4f8, #ffffff);
-  padding: 100px 20px;
+  background: var(--bg-section);
+  padding: calc(var(--spacer) * 4) 0;
   text-align: center;
+  animation: fadeInUp var(--speed) var(--ease) forwards;
 }
 
 .sectionHeader {
-  margin-bottom: 40px;
-  animation: fadeInUp 0.6s ease forwards;
+  margin-bottom: calc(var(--spacer) * 2);
 }
-
 .sectionHeader p {
-  font-size: 18px;
-  color: #0077b6;
-  font-weight: 500;
-  margin: 0;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: calc(var(--spacer) / 2);
 }
-
 .sectionHeader h2 {
-  font-size: 36px;
-  color: #023e8a;
-  font-weight: 700;
-  margin-top: 10px;
+  font-size: var(--fs-xxl);
+  color: var(--color-dark);
+  position: relative;
+  display: inline-block;
+}
+.sectionHeader h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  margin: var(--spacer) auto 0;
 }
 
 .description {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 30px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 1s ease forwards;
+  font-size: var(--fs-md);
+  color: var(--color-muted);
+  max-width: 600px;
+  margin: 0 auto calc(var(--spacer) * 2);
+  line-height: 1.6;
 }
 
 .buttonGroup {
   display: flex;
   justify-content: center;
+  gap: var(--spacer);
   flex-wrap: wrap;
-  gap: 20px;
-  animation: fadeInUp 0.8s ease;
 }
 
 .btnPrimary,
 .btnOutline {
-  display: inline-block;
-  padding: 12px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 30px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  padding: 0.75rem 1.75rem;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  border-radius: 50px;
   cursor: pointer;
+  transition: background var(--speed-fast) var(--ease),
+    color var(--speed-fast) var(--ease), transform var(--speed-fast) var(--ease);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btnPrimary {
-  background-color: #0077b6;
+  background: var(--color-primary);
   color: #fff;
+  border: none;
 }
-
 .btnPrimary:hover {
-  background-color: #023e8a;
-  transform: scale(1.05);
+  background: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .btnOutline {
-  border: 2px solid #0077b6;
-  color: #0077b6;
-  background-color: transparent;
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
-
 .btnOutline:hover {
-  background-color: #e0f4ff;
-  transform: scale(1.05);
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-/* Animations */
+/* Вспомогательная анимация */
 @keyframes fadeInUp {
   from {
-    transform: translateY(30px);
     opacity: 0;
+    transform: translateY(40px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

@@ -1,86 +1,160 @@
-.portfolio {
-  padding: 4rem 1rem;
-  background: #f5f5f5;
+/* src/components/Portfolio/Portfolio.module.css */
+
+.container {
+  width: min(100% - 2 * var(--gutter), 1200px);
+  margin: 0 auto;
+  padding: var(--gutter) 0;
 }
+
 .sectionHeader {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: calc(var(--spacer) * 2);
 }
+.sectionHeader p {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.sectionHeader h2 {
+  font-size: var(--fs-xxl);
+  color: var(--color-dark);
+  position: relative;
+  display: inline-block;
+}
+.sectionHeader h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: var(--spacer) auto 0;
+}
+
 .grid {
   display: grid;
-  gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gutter);
 }
+
 .card {
   position: relative;
+  background: #fff;
+  border-radius: 12px;
   overflow: hidden;
-  border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp var(--speed) var(--ease) forwards;
 }
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.card:nth-child(5) {
+  animation-delay: 1s;
+}
+
 .image {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
+
 .overlay {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 0.5rem;
-}
-.btn {
-  background: #ef233c;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: #d90429;
-}
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modalContent {
-  background: white;
-  border-radius: 1rem;
-  width: 90%;
-  height: 90%;
-  padding: 1rem;
-  position: relative;
-}
-.iframe {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: none;
-  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease);
 }
+
+.card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.buttons {
+  margin-top: var(--spacer);
+  display: flex;
+  gap: var(--spacer);
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-secondary);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease);
+}
+.btn:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+.modalContent {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: zoomIn var(--speed) var(--ease) forwards;
+}
+
 .close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  background: #ef233c;
-  color: white;
+  top: 12px;
+  right: 12px;
+  background: transparent;
   border: none;
-  font-size: 1.2rem;
-  padding: 0.4rem 0.8rem;
+  font-size: 1.5rem;
+  color: var(--color-dark);
   cursor: pointer;
-  border-radius: 50%;
+  transition: color var(--speed-fast) var(--ease);
+}
+.close:hover {
+  color: var(--color-secondary);
+}
+
+.iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
 }

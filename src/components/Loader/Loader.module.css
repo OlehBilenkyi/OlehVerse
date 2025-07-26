@@ -1,28 +1,39 @@
-/* src/components/Loader/Loader.module.css */
+/* Loader.module.css */
 
-#loader {
+.loaderWrapper {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: #ffffff;
-  z-index: 9999;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-page);
   display: flex;
-  justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease;
+  justify-content: center;
+  z-index: var(--z-modal);
+  opacity: 1;
+  animation: fadeOut var(--speed) var(--ease) forwards var(--speed);
 }
 
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #ccc;
-  border-top: 6px solid #ef233c; /* красный акцент */
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid var(--color-light);
+  border-top-color: var(--color-primary);
+  border-bottom-color: var(--color-secondary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
+/* исчезновение обёртки */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* анимация вращения */
 @keyframes spin {
   to {
     transform: rotate(360deg);
