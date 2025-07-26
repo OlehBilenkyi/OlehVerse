@@ -1,70 +1,284 @@
-/* Footer.module.css */
+/* === src/components/Footer/Footer.module.css === */
 
 .footer {
-  background: var(--color-dark);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-dark) 0%, #151515 100%);
   color: var(--color-light);
-  padding: calc(var(--spacer) * 2) 0;
+  padding: calc(var(--spacer) * 3) 0;
+}
+
+/* декоративный блик */
+.decorative {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(26, 115, 232, 0.15) 0%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--gutter);
   text-align: center;
+  animation: fadeInUp var(--speed) var(--ease) forwards;
 }
 
 .title {
-  font-size: var(--fs-xl);
-  font-weight: 700;
+  font-size: var(--fs-xxl);
+  font-weight: 800;
   margin-bottom: var(--spacer);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  margin: var(--spacer) auto 0;
+  border-radius: 2px;
 }
 
 .subtitle {
   font-size: var(--fs-md);
   color: var(--color-muted);
   margin-bottom: calc(var(--spacer) * 1.5);
+  font-style: italic;
+}
+
+/* Сетка внутреннего содержимого */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: calc(var(--spacer) * 2);
+  margin-bottom: calc(var(--spacer) * 2);
+}
+
+/* Общий стиль для ячеек */
+.item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacer);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  transition: transform var(--speed-fast) var(--ease),
+    background var(--speed-fast) var(--ease);
+}
+.item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Часы */
+.clock {
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+/* Погода */
+.weather {
+  font-size: var(--fs-md);
+  font-weight: 500;
+}
+
+/* Цитата */
+.quote {
+  font-style: italic;
+  color: var(--color-light);
+  position: relative;
+  padding: var(--spacer) 1rem;
+}
+.quote::before {
+  content: "“";
+  font-size: 2rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  color: var(--color-primary);
+}
+.quote::after {
+  content: "”";
+  font-size: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  bottom: -0.25rem;
+  color: var(--color-secondary);
+}
+
+/* Игра */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gameSvg {
+  cursor: pointer;
+  transition: transform var(--speed-fast) var(--ease);
+}
+.gameSvg:hover {
+  transform: scale(1.1);
+}
+.gameCircle {
+  fill: var(--color-primary);
+  stroke: var(--color-light);
+  stroke-width: 3;
+  transition: fill var(--speed-fast) var(--ease);
+}
+.gameCircle:hover {
+  fill: var(--color-secondary);
+}
+.gameScore {
+  margin: var(--spacer) 0 0;
+  font-weight: bold;
+}
+.gameHint {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+/* Счётчик посетителей */
+.visitors {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+/* Нижний блок контактов */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: calc(var(--spacer) * 1.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer);
 }
 
 .contactInfo {
-  margin-bottom: var(--spacer);
+  display: flex;
+  gap: var(--spacer);
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
-.contactInfo p {
-  margin: 0.25rem 0;
-  font-size: var(--fs-sm);
-  color: var(--color-light);
-}
-
 .contactInfo a {
-  color: var(--color-primary);
+  color: var(--color-light);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 2px;
   transition: color var(--speed-fast) var(--ease);
 }
-
+.contactInfo a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  transition: width var(--speed-fast) var(--ease);
+}
 .contactInfo a:hover {
-  color: var(--color-accent);
+  color: var(--color-secondary);
+}
+.contactInfo a:hover::after {
+  width: 100%;
 }
 
 .social {
   display: flex;
   justify-content: center;
   gap: var(--spacer);
-  margin-bottom: var(--spacer);
 }
-
 .social a {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--color-light);
-  transition: color var(--speed-fast) var(--ease),
-    transform var(--speed-fast) var(--ease);
+  transition: transform var(--speed-fast) var(--ease),
+    color var(--speed-fast) var(--ease);
 }
-
 .social a:hover {
-  color: var(--color-accent);
-  transform: translateY(-3px);
+  color: var(--color-secondary);
+  transform: translateY(-3px) scale(1.2);
 }
 
-.copyright {
+copyright {
   font-size: var(--fs-sm);
   color: var(--color-muted);
+}
+/* ——— TicTacToeGame ——— */
+
+.ttt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer);
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-gap: 6px;
+}
+
+.ttt-cell {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-light);
+  cursor: pointer;
+  transition: background var(--speed-fast) var(--ease);
+}
+.ttt-cell:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ttt-message {
+  text-align: center;
+  color: var(--color-light);
+  font-size: var(--fs-md);
+  animation: fadeInUp var(--speed) var(--ease) forwards;
+}
+
+.ttt-reset {
+  margin-top: var(--spacer);
+  padding: 0.5rem 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform var(--speed-fast) var(--ease);
+}
+.ttt-reset:hover {
+  transform: translateY(-2px);
 }
