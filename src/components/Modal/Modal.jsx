@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
           <a
             href="/resume/Oleh-Bilenkyi-CV.pdf"
             download
-            className={`btn ${styles.downloadTopBtn}`}
+            className={`${styles.downloadBtn}`}
           >
             ⬇️ Download CV
           </a>
