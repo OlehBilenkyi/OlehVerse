@@ -1,4 +1,4 @@
-import styles from "./Hero.module.css";
+import styles from "../Hero.module.css";
 
 const HeroButtons = ({ onShowResume }) => (
   <div className={`wow fadeInUp ${styles.heroBtn}`} data-wow-delay="0.7s">

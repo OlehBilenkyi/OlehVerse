@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Modal from "../Modal/Modal";
+import Modal from "../../Modal/Modal";
 
 const ResumeModal = () => {
   const [open, setOpen] = useState(false);

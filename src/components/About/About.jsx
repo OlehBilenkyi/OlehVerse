@@ -1,40 +1,38 @@
-// src/components/About/About.jsx
 import React from "react";
 import styles from "./About.module.css";
+import useInView from "./hooks/useInView";
+import AboutImage from "./AboutImage/AboutImage";
+import AboutText from "./AboutText/AboutText";
+import Skills from "./Skills/Skills";
+import TechStack from "./TechStack/TechStack";
 
 const About = () => {
+  const [ref, inView] = useInView(0.3);
+
   return (
-    <section className={styles.about} id="about">
+    <section className={styles.about} id="about" ref={ref}>
+      <div className={styles.decorative} />
       <div className="container">
         <div className={styles.row}>
-          <div className={styles.aboutImg}>
-            <img src="/img/about.jpg" alt="About Me" />
-          </div>
-          <div className={styles.aboutContent}>
+          <AboutImage />
+          <div
+            className={`${styles.aboutContent} ${inView ? styles.show : ""}`}
+          >
             <div className={styles.sectionHeader}>
-              <p>Learn About Me</p>
-              <h2>Junior React Developer</h2>
+              <p data-aos="fade-up">Learn About Me</p>
+              <h2 data-aos="fade-up" data-aos-delay="200">
+                Junior React Developer
+              </h2>
             </div>
-            <div className={styles.aboutText}>
-              <p>
-                Привет, меня зовут Олег. Я начинающий фронтенд-разработчик,
-                специализируюсь на React, создаю адаптивные, быстрые и красивые
-                интерфейсы. Постоянно учусь и стремлюсь расти в реальных
-                проектах.
-              </p>
-            </div>
-            <div className={styles.skills}>
-              <SkillBar title="React + JS" percent={90} />
-              <SkillBar title="HTML / CSS / Tailwind" percent={95} />
-              <SkillBar title="Git / GitHub" percent={85} />
-              <SkillBar title="Firebase / REST API" percent={80} />
-            </div>
+            <AboutText inView={inView} />
+            <Skills inView={inView} />
+            <TechStack />
             <button
               className="btn"
               onClick={() =>
                 document
                   .getElementById("portfolio")
-                  .scrollIntoView({ behavior: "smooth" })
+                  ?.scrollIntoView({ behavior: "smooth" })
               }
             >
               See My Projects
@@ -45,25 +43,5 @@ const About = () => {
     </section>
   );
 };
-
-// Вложенный компонент прогресс-бара
-const SkillBar = ({ title, percent }) => (
-  <>
-    <div className={styles.skillName}>
-      <p>{title}</p>
-      <p>{percent}%</p>
-    </div>
-    <div className={styles.progress}>
-      <div
-        className={styles.progressBar}
-        role="progressbar"
-        style={{ width: `${percent}%` }}
-        aria-valuenow={percent}
-        aria-valuemin="0"
-        aria-valuemax="100"
-      />
-    </div>
-  </>
-);
 
 export default About;

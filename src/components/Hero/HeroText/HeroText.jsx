@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import styles from "./Hero.module.css";
-import HeroButtons from "./HeroButtons";
-import { useTypedText } from "./hooks/useTypedText";
+import styles from "../Hero.module.css";
+import HeroButtons from "../HeroButtons/HeroButtons";
+import { useTypedText } from "../hooks/useTypedText";
 
 const HeroText = () => {
   const [showResume, setShowResume] = useState(false);

@@ -1,37 +1,45 @@
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import ScrollToTopOnLoad from "./components/ScrollToTopOnLoad";
 import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import Services from "./components/Services/Services";
 import Experience from "./components/Experience/Experience";
-import ResumeBlock from "./components/ResumeBlock/ResumeBlock";
+// import ResumeBlock from "./components/ResumeBlock/ResumeBlock";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import BackToTop from "./components/BackToTop/BackToTop";
 
-// Optional: для анимации при скролле (если подключён wow.js, AOS, framer-motion и т.п.)
-// Можно активировать дополнительные скролл-анимации или эффекты тут
 function App() {
   useEffect(() => {
-    window.scrollTo(0, 0); // При загрузке страницы прокрутка вверх
+    AOS.init({ once: true, duration: 1000 });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
   return (
-    <>
+    <div id="app">
+      <ScrollToTopOnLoad />
       <Loader />
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Experience />
-      <ResumeBlock />
-      <Portfolio />
-      <Contact />
+
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Experience />
+        {/* <ResumeBlock /> */}
+        <Portfolio />
+        <Contact />
+      </main>
+
       <Footer />
       <BackToTop />
-    </>
+    </div>
   );
 }
 

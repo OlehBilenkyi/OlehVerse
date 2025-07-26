@@ -1,7 +1,7 @@
 import styles from "./Hero.module.css";
-import HeroText from "./HeroText";
-import HeroImage from "./HeroImage";
-import ResumeModal from "./ResumeModal";
+import HeroText from "./HeroText/HeroText";
+import HeroImage from "./HeroImage/HeroImage";
+import ResumeModal from "./ResumeModal/ResumeModal";
 import { useParallax } from "./hooks/useParallax";
 
 const Hero = () => {
