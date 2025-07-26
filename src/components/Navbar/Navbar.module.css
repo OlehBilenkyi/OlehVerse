@@ -1,89 +1,173 @@
-/* Navbar.module.css */
+:root {
+  --mobile-menu-width: 260px;
+}
 
+/* BACKDROP FOR MOBILE MENU */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 899;
+}
+
+/* SCROLL PROGRESS BAR */
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--color-secondary);
+  z-index: 1002;
+  transition: width 0.2s ease-out;
+}
+
+/* NAVBAR */
 .navbar {
   position: sticky;
   top: 0;
-  width: 100%;
-  background: var(--bg-section);
-  padding: 0 var(--gutter);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background var(--speed) var(--ease);
+  padding: 0 var(--gutter);
+  /* декора — всегда градиент */
+  background: linear-gradient(
+    90deg,
+    rgba(26, 115, 232, 0.9) 0%,
+    rgba(255, 109, 0, 0.9) 100%
+  );
+  transition:
+    background var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
+  z-index: 900;
 }
 
+/* Auto-hide on scroll-down */
+.hidden {
+  transform: translateY(-100%);
+}
+
+/* При скролле добавляем тень и размытие */
+.scrolled {
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* BRAND */
 .brand {
+  font-family: var(--font-sans);
   font-size: var(--fs-xl);
   font-weight: 700;
-  color: var(--color-primary);
+  color: #fff;
   text-decoration: none;
+  transition: color var(--speed-fast) var(--ease);
+}
+.brand:hover {
+  color: var(--color-light);
 }
 
+/* BURGER ICON */
 .toggle {
   display: none;
-  font-size: 1.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
   background: none;
   border: none;
-  color: var(--color-dark);
   cursor: pointer;
+  z-index: 1001;
+}
+.bar {
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform var(--speed-fast) var(--ease),
+              opacity var(--speed-fast) var(--ease);
+}
+.toggle.open .bar:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.toggle.open .bar:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
 }
 
+/* LINKS CONTAINER */
 .navLinks {
   display: flex;
   gap: var(--gutter);
+  position: relative;
+  z-index: 1000;
 }
 
+/* LINK */
 .link {
   position: relative;
-  font-size: var(--fs-md);
-  color: var(--color-dark);
-  text-decoration: none;
   padding: var(--spacer) 0;
-  transition: color var(--speed-fast) var(--ease);
+  font-size: var(--fs-md);
+  color: #fff;
+  text-decoration: none;
+  transition: color var(--speed-fast) var(--ease),
+              transform var(--speed-fast) var(--ease);
 }
-
-.link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width var(--speed-fast) var(--ease);
-}
-
 .link:hover,
-.active {
-  color: var(--color-primary);
+.link.active {
+  color: var(--color-light);
+  transform: translateY(-2px) scale(1.05);
 }
 
-.link:hover::after,
-.active::after {
-  width: 100%;
+/* INDICATOR UNDERLINE */
+.indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-light);
+  transition: transform var(--speed-fast) var(--ease),
+              width var(--speed-fast) var(--ease);
 }
 
-/* Responsive */
+/* MOBILE ADAPTIVE */
 @media (max-width: 768px) {
   .toggle {
-    display: block;
+    display: flex;
   }
   .navLinks {
     position: fixed;
-    top: 100%;
+    top: 0;
     right: 0;
-    width: 240px;
-    max-width: 80%;
-    background: var(--bg-section);
+    width: var(--mobile-menu-width);
+    height: 100vh;
     flex-direction: column;
-    padding: var(--spacer);
-    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 4rem 1.5rem;
+    background: var(--bg-section);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
     transition: transform var(--speed-fast) var(--ease);
   }
   .navLinks.open {
+    transform: translateX(0);
+  }
+  .link {
+    opacity: 0;
+    transform: translateX(20px);
+    margin-bottom: 1.5rem;
+    animation: fadeInLink 0.6s var(--ease) forwards;
+    animation-delay: var(--delay);
+  }
+}
+
+/* KEYFRAMES */
+@keyframes fadeInLink {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
     transform: translateX(0);
   }
 }
