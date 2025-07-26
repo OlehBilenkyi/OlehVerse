@@ -1,7 +1,7 @@
 // src/components/Navbar/NavLinks.jsx
 import React from "react";
-import styles from "./Navbar.module.css";
-import NavLink from "./NavLink";
+import styles from "../Navbar.module.css";
+import NavLink from "../NavLink/NavLink";
 
 const NavLinks = ({
   links,

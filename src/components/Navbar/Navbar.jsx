@@ -5,10 +5,10 @@ import useScrollPosition from "./hooks/useScrollPosition";
 import useScrollSpy from "./hooks/useScrollSpy";
 import useIndicatorPosition from "./hooks/useIndicatorPosition";
 
-import ToggleButton from "./ToggleButton";
-import ScrollProgress from "./ScrollProgress";
-import Backdrop from "./Backdrop";
-import NavLinks from "./NavLinks";
+import ToggleButton from "./ToggleButton/ToggleButton";
+import ScrollProgress from "./ScrollProgress/ScrollProgress";
+import Backdrop from "./Backdrop/Backdrop";
+import NavLinks from "./NavLinks/NavLinks";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -47,8 +47,7 @@ const Navbar = () => {
         <a href="#home" className={styles.brand}>
           OlehVerse
         </a>
-        <ToggleButton open={open} onClick={() => setOpen((o) => !o)} />
-        {" "}
+        <ToggleButton open={open} onClick={() => setOpen((o) => !o)} />{" "}
         <NavLinks
           links={links}
           open={open}
