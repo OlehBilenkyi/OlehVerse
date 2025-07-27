@@ -75,8 +75,8 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.decorative} />
       <div className={styles.container}>
-        <h2 className={styles.title}>Oleh Bilenkyi</h2>
-        <p className={styles.subtitle}>Frontend Developer</p>
+        <h2 className={styles.title}></h2>
+        {/* <p className={styles.subtitle}>Frontend Developer</p> */}
 
         <div className={styles.grid}>
           <div className={styles.item}>
