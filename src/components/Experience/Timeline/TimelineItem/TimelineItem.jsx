@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Experience.module.css";
+import styles from "../../Experience.module.css";
+import TimelineContent from "../TimelineContent/TimelineContent";
 
 const TimelineItem = ({
   date,
@@ -10,7 +11,6 @@ const TimelineItem = ({
   shiftUp,
 }) => {
   const aosType = position === "left" ? "fade-right" : "fade-left";
-
   const shiftClass =
     shiftUp && position === "left"
       ? styles.shiftLeftUp
@@ -23,12 +23,7 @@ const TimelineItem = ({
       className={`${styles["timeline-item"]} ${styles[position]} ${shiftClass}`}
       data-aos={aosType}
     >
-      <div className={styles["timeline-text"]}>
-        <div className={styles["timeline-date"]}>{date}</div>
-        <h3 className={styles["timeline-title"]}>{title}</h3>
-        <h4 className={styles["timeline-company"]}>{company}</h4>
-        <p className={styles["timeline-desc"]}>{description}</p>
-      </div>
+      <TimelineContent {...{ date, title, company, description }} />
     </div>
   );
 };
