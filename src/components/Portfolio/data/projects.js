@@ -1,9 +1,10 @@
 // src/components/Portfolio/projects.js
+
 export const projects = [
   {
     title: "Taxi App",
     category: "Fullstack",
-    image: "/img/projects/taxi.png",
+    image: `${import.meta.env.BASE_URL}img/projects/taxi.png`,
     demoUrl: "https://olehbilenkyi.github.io/TaxiAppBuiltWithReact/",
     codeUrl: "https://github.com/OlehBilenkyi/TaxiAppBuiltWithReact",
     description:
@@ -13,7 +14,7 @@ export const projects = [
   {
     title: "Meal Planner",
     category: "React",
-    image: "/img/projects/meal.png",
+    image: `${import.meta.env.BASE_URL}img/projects/meal.png`,
     demoUrl: "https://olehbilenkyi.github.io/MealPlannerPro/",
     codeUrl: "https://github.com/OlehBilenkyi/MealPlannerPro",
     description:
@@ -23,7 +24,7 @@ export const projects = [
   {
     title: "React Food Case",
     category: "React",
-    image: "/img/projects/food.png",
+    image: `${import.meta.env.BASE_URL}img/projects/food.png`,
     demoUrl: "https://olehbilenkyi.github.io/ReactFoodCase/",
     codeUrl: "https://github.com/OlehBilenkyi/ReactFoodCase",
     description: "Упрощённый food-доставщик с корзиной и фильтрацией блюд.",
@@ -32,7 +33,7 @@ export const projects = [
   {
     title: "Mini YouTube Player",
     category: "React",
-    image: "/img/projects/youtube.png",
+    image: `${import.meta.env.BASE_URL}img/projects/youtube.png`,
     demoUrl: "https://olehbilenkyi.github.io/MiniPlayerForYoutube/",
     codeUrl: "https://github.com/OlehBilenkyi/MiniPlayerForYoutube",
     description:
@@ -42,7 +43,7 @@ export const projects = [
   {
     title: "React Resume",
     category: "PHP",
-    image: "/img/projects/resume.png",
+    image: `${import.meta.env.BASE_URL}img/projects/resume.png`,
     demoUrl: "https://olehbilenkyi.github.io/ReactResume/",
     codeUrl: "https://github.com/OlehBilenkyi/ReactResume",
     description: "Резюме-сайт с загрузкой PDF, секциями и адаптивным дизайном.",

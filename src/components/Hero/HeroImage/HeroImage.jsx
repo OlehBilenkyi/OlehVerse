@@ -4,10 +4,10 @@ const HeroImage = () => (
   <div className={styles.right}>
     <div className="wow zoomIn" data-wow-delay="0.9s">
       <img
-  className={styles.heroImage}
-  src="/img/me.jpg"
-  alt="Oleh Bilenkyi"
-/>
+        className={styles.heroImage}
+        src={`${import.meta.env.BASE_URL}img/me.jpg`}
+        alt="Oleh Bilenkyi"
+      />
     </div>
   </div>
 );

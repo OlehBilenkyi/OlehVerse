@@ -13,7 +13,9 @@ const AboutImage = () => {
       >
         <div className={styles.githubPreview}>
           <img
-            src="/img/httpsgithub.comOlehBilenkyi.jpg" // ← свой скриншот GitHub-профиля
+            src={`${
+              import.meta.env.BASE_URL
+            }img/httpsgithub.comOlehBilenkyi.jpg`}
             alt="GitHub Preview"
             className={styles.previewImage}
           />

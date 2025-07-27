@@ -16,7 +16,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
         <h2 id="modal-title">My Resume</h2>
         <div className={styles.headerActions}>
           <a
-            href="/resume/Oleh-Bilenkyi-CV.pdf"
+            href={`${import.meta.env.BASE_URL}resume/Oleh-Bilenkyi-CV.pdf`}
             download
             className={styles.downloadBtn}
           >
@@ -35,7 +35,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
       <div className={styles.content}>
         {loading && <div className={styles.loader}></div>}
         <iframe
-          src="/resume/Oleh-Bilenkyi-CV.pdf"
+          src={`${import.meta.env.BASE_URL}resume/Oleh-Bilenkyi-CV.pdf`}
           title="CV"
           onLoad={() => setLoading(false)}
         />
