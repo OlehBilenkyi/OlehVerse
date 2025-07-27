@@ -1,7 +1,9 @@
+// src/components/Hero/HeroText.jsx
 import { useState, useEffect } from "react";
 import styles from "../Hero.module.css";
 import HeroButtons from "../HeroButtons/HeroButtons";
 import { useTypedText } from "../hooks/useTypedText";
+import SectionHeader from "../../SectionHeader/SectionHeader";
 
 const HeroText = () => {
   const [showResume, setShowResume] = useState(false);
@@ -18,15 +20,11 @@ const HeroText = () => {
   return (
     <div className={styles.left}>
       <div className={styles.heroText}>
-        <p className="wow fadeInUp" data-wow-delay="0.1s">
-          Hi, I’m
-        </p>
-        <h1
-          className={`wow fadeInUp ${styles.gradientText}`}
-          data-wow-delay="0.3s"
-        >
-          Oleh Bilenkyi
-        </h1>
+        <SectionHeader
+          subtitle="Hello! 👋"
+          title="I'm Oleh — Frontend Developer"
+          animation="fade-up"
+        />
         <span className={`wow fadeInUp ${styles.typed}`} data-wow-delay="0.5s">
           <span ref={typedRef}></span>
           <span className="typed-cursor" />

@@ -6,6 +6,11 @@
    1. Цветовая палитра & типографика
    ————————————————————————————— */
 :root {
+  --bg-unified: linear-gradient(
+    135deg,
+    #eef2f3cc,
+    #dfe9f3cc
+  ); /* 🟣 Прозрачный градиент */
   /* Основные цвета */
   --color-primary: #1a73e8;
   --color-secondary: #ff6d00;
@@ -89,8 +94,9 @@ a:hover {
 
 /* секция */
 section {
-  background: var(--bg-section);
+  background: var(--bg-unified);
   padding: calc(var(--spacer) * 4) 0;
+  position: relative;
 }
 
 /* заголовок секции */
@@ -98,6 +104,7 @@ section {
   text-align: center;
   margin-bottom: calc(var(--spacer) * 2);
 }
+
 .section-header p {
   color: var(--color-secondary);
   font-weight: 600;
@@ -105,11 +112,14 @@ section {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 .section-header h2 {
   font-size: var(--fs-xxl);
   display: inline-block;
   position: relative;
+  color: var(--color-dark);
 }
+
 .section-header h2::after {
   content: "";
   display: block;
