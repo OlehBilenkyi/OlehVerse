@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "../Hero.module.css";
 
 const HeroButtons = ({ onShowResume }) => (
@@ -16,5 +17,9 @@ const HeroButtons = ({ onShowResume }) => (
     </a>
   </div>
 );
+
+HeroButtons.propTypes = {
+  onShowResume: PropTypes.func.isRequired,
+};
 
 export default HeroButtons;

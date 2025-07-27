@@ -1,21 +1,15 @@
-// src/components/Hero/HeroText.jsx
-import { useState, useEffect } from "react";
-import styles from "../Hero.module.css";
-import HeroButtons from "../HeroButtons/HeroButtons";
+// src/components/Hero/HeroText/HeroText.jsx
 import { useTypedText } from "../hooks/useTypedText";
+import styles from "../Hero.module.css";
 import SectionHeader from "../../SectionHeader/SectionHeader";
+import HeroButtons from "../HeroButtons/HeroButtons";
 
-const HeroText = () => {
-  const [showResume, setShowResume] = useState(false);
+const HeroText = ({ onShowResume }) => {
   const typedRef = useTypedText([
     "Frontend Developer",
     "React Enthusiast",
     "UI/UX Lover",
   ]);
-
-  useEffect(() => {
-    window.__setShowResume = setShowResume;
-  }, []);
 
   return (
     <div className={styles.left}>
@@ -29,7 +23,7 @@ const HeroText = () => {
           <span ref={typedRef}></span>
           <span className="typed-cursor" />
         </span>
-        <HeroButtons onShowResume={() => setShowResume(true)} />
+        <HeroButtons onShowResume={onShowResume} />
       </div>
     </div>
   );

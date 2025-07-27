@@ -1,32 +1,74 @@
 // src/components/Portfolio/Portfolio.jsx
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Portfolio.module.css";
-import ProjectCard from "./ProjectCard";
-import PortfolioModal from "./PortfolioModal";
-import { projects } from "./projects"; // наш новый файл
+import Filters from "./Filters/Filters";
+import ProjectGrid from "./ProjectGrid/ProjectGrid";
+import Modal from "../Modal/Modal";
+import modalStyles from "../Modal/PortfolioModal.module.css";
+import { usePortfolio } from "./hooks/usePortfolio";
+import { projects } from "./data/projects";
 
 const Portfolio = () => {
-  const [selected, setSelected] = useState(null);
+  const {
+    selected,
+    setSelected,
+    activeFilter,
+    setActiveFilter,
+    filters,
+    filteredProjects,
+  } = usePortfolio();
 
   return (
     <section id="portfolio" className={styles.portfolio}>
       <div className={styles.container}>
-        <div className={styles.sectionHeader}>
+        <div className="section-header" data-aos="fade-up">
           <p>My Portfolio</p>
           <h2>My Completed Projects</h2>
         </div>
-        <div className={styles.grid}>
-          {projects.map((p, i) => (
-            <ProjectCard key={i} project={p} onDemo={setSelected} />
-          ))}
-        </div>
-        {selected && (
-          <PortfolioModal
-            project={selected}
-            onClose={() => setSelected(null)}
-          />
-        )}
+
+        <Filters
+          filters={filters}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
+
+        <ProjectGrid projects={filteredProjects} onOpenDemo={setSelected} />
       </div>
+
+      {selected && (
+        <Modal
+          isOpen={!!selected}
+          onClose={() => setSelected(null)}
+          className={modalStyles.backdrop}
+          contentClass={modalStyles.modal}
+        >
+          <div className={modalStyles.toolbar}>
+            <a
+              href={selected.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={modalStyles.iconBtn}
+              title="Open in new tab"
+            >
+              ↗
+            </a>
+            <button
+              onClick={() => setSelected(null)}
+              className={modalStyles.iconBtn}
+              aria-label="Close modal"
+              title="Close"
+            >
+              ×
+            </button>
+          </div>
+
+          <iframe
+            src={selected.demoUrl}
+            title={selected.title}
+            allow="fullscreen"
+          />
+        </Modal>
+      )}
     </section>
   );
 };

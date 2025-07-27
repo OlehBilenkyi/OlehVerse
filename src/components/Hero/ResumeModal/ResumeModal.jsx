@@ -1,20 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../../Modal/Modal";
+import styles from "../../Modal/CvModal.module.css";
 
-const ResumeModal = () => {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    window.__setShowResume = setOpen;
-  }, []);
+const ResumeModal = ({ isOpen, onClose }) => {
+  const [loading, setLoading] = useState(true);
 
   return (
-    <Modal isOpen={open} onClose={() => setOpen(false)} title="My Resume">
-      <iframe
-        src="/resume/Oleh-Bilenkyi-CV.pdf"
-        title="CV"
-        style={{ width: "100%", height: "80vh", border: "none" }}
-      />
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className={styles.backdrop}
+      contentClass={styles.modal}
+    >
+      <div className={styles.header}>
+        <h2 id="modal-title">My Resume</h2>
+        <div className={styles.headerActions}>
+          <a
+            href="/resume/Oleh-Bilenkyi-CV.pdf"
+            download
+            className={styles.downloadBtn}
+          >
+            Download PDF
+          </a>
+          <button
+            className={styles.closeBtn}
+            onClick={onClose}
+            aria-label="Close modal"
+          >
+            ×
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.content}>
+        {loading && <div className={styles.loader}></div>}
+        <iframe
+          src="/resume/Oleh-Bilenkyi-CV.pdf"
+          title="CV"
+          onLoad={() => setLoading(false)}
+        />
+      </div>
+
+      <div className={styles.modalFooter}>© Oleh Bilenkyi — Resume 2025</div>
     </Modal>
   );
 };
