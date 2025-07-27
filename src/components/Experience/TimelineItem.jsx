@@ -1,12 +1,26 @@
 import React from "react";
 import styles from "./Experience.module.css";
 
-const TimelineItem = ({ date, title, company, description, position }) => {
+const TimelineItem = ({
+  date,
+  title,
+  company,
+  description,
+  position,
+  shiftUp,
+}) => {
   const aosType = position === "left" ? "fade-right" : "fade-left";
+
+  const shiftClass =
+    shiftUp && position === "left"
+      ? styles.shiftLeftUp
+      : shiftUp && position === "right"
+      ? styles.shiftRightUp
+      : "";
 
   return (
     <div
-      className={`${styles["timeline-item"]} ${styles[position]}`}
+      className={`${styles["timeline-item"]} ${styles[position]} ${shiftClass}`}
       data-aos={aosType}
     >
       <div className={styles["timeline-text"]}>
