@@ -5,6 +5,7 @@ import AboutImage from "./AboutImage/AboutImage";
 import AboutText from "./AboutText/AboutText";
 import Skills from "./Skills/Skills";
 import TechStack from "./TechStack/TechStack";
+import SectionHeader from "../SectionHeader/SectionHeader";
 
 const About = () => {
   const [ref, inView] = useInView(0.3);
@@ -18,12 +19,11 @@ const About = () => {
           <div
             className={`${styles.aboutContent} ${inView ? styles.show : ""}`}
           >
-            <div className={styles.sectionHeader}>
-              <p data-aos="fade-up">Learn About Me</p>
-              <h2 data-aos="fade-up" data-aos-delay="200">
-                Junior React Developer
-              </h2>
-            </div>
+            <SectionHeader
+              subtitle="Learn About Me"
+              title="Junior React Developer"
+              animation="fade-up"
+            />
             <AboutText inView={inView} />
             <Skills inView={inView} />
             <TechStack />
