@@ -7,7 +7,7 @@ import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
-import Services from "./components/Services/Services";
+import ResumeHighlights from "./components/ResumeHighlights/ResumeHighlights";
 import Experience from "./components/Experience/Experience";
 // import ResumeBlock from "./components/ResumeBlock/ResumeBlock";
 import Portfolio from "./components/Portfolio/Portfolio";
@@ -38,7 +38,7 @@ function App() {
         <Experience />
         {/* <ResumeBlock /> */}
         <Portfolio />
-        <Services />
+        <ResumeHighlights />
         <Contact />
       </main>
 

@@ -1,5 +1,3 @@
-/* src/components/BackToTop/BackToTop.module.css */
-
 .backToTop {
   position: fixed;
   bottom: 2rem;
@@ -9,30 +7,68 @@
   height: 3.5rem;
   border: none;
   border-radius: 50%;
-  background-color: var(--color-primary);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(2rem);
-  transition: opacity var(--speed-fast) var(--ease),
-    transform var(--speed-fast) var(--ease),
-    background-color var(--speed-fast) var(--ease);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(2rem) scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.25),
+    0 0 0.5rem rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(2px);
 }
 
 .visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  animation: pulse 2s infinite;
 }
 
 .backToTop:hover {
-  background-color: var(--color-accent);
-  transform: translateY(-0.5rem);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-primary)
+  );
+  transform: translateY(-0.4rem) scale(1.05);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.35),
+    0 0 1rem var(--color-primary);
 }
 
 .backToTop i {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+}
+
+/* Glow Pulse */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+  }
+  70% {
+    box-shadow: 0 0 0 0.75rem rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .backToTop {
+    width: 3rem;
+    height: 3rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .backToTop i {
+    font-size: 1.2rem;
+  }
 }

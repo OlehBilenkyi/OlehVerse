@@ -1,7 +1,5 @@
-// src/components/BackToTop.jsx
 import React, { useEffect, useState } from "react";
 import styles from "./BackToTop.module.css";
-
 
 const BackToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -25,7 +23,15 @@ const BackToTop = () => {
       onClick={scrollToTop}
       aria-label="Back to top"
     >
-      <i className="fas fa-chevron-up"></i>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        width="24"
+        height="24"
+      >
+        <path d="M12 8.41l4.29 4.3 1.42-1.42L12 5.59l-5.71 5.7 1.42 1.42L12 8.41Z" />
+      </svg>
     </button>
   );
 };

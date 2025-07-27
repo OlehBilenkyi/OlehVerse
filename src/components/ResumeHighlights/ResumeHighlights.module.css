@@ -1,0 +1,171 @@
+.resume {
+  background: var(--bg-section);
+  padding: calc(var(--spacer) * 5) 0;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: calc(var(--spacer) * 3);
+  overflow: hidden;
+}
+
+.sectionHeader p {
+  color: var(--color-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: var(--fs-sm);
+  margin-bottom: 0.5rem;
+  animation: fadeInUp var(--speed) var(--ease) forwards;
+}
+
+.sectionHeader h2 {
+  font-size: var(--fs-xxl);
+  color: var(--color-dark);
+  position: relative;
+  display: inline-block;
+  animation: zoomIn var(--speed) var(--ease) forwards;
+}
+
+.sectionHeader h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+  animation: growBar 1s ease-in-out forwards;
+}
+
+/* Grid */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: calc(var(--spacer) * 2);
+  margin-top: calc(var(--spacer) * 2);
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.05);
+  transition: transform var(--speed-fast) var(--ease),
+    box-shadow var(--speed-fast) var(--ease);
+  opacity: 0;
+  transform: translateY(40px);
+  position: relative;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.card.wow.fadeInUp {
+  animation: fadeInUp var(--speed) var(--ease) forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon */
+.icon {
+  width: 72px;
+  height: 72px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 1rem;
+  transition: background var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease);
+  box-shadow: 0 0 0 4px rgba(77, 124, 254, 0.2);
+}
+
+.card:hover .icon {
+  background: var(--color-accent);
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px rgba(52, 168, 83, 0.25);
+}
+
+/* Text */
+.text h3 {
+  font-size: var(--fs-lg);
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.text p {
+  font-size: var(--fs-md);
+  color: var(--color-muted);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation Keyframes (из index.css — поддержка) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes growBar {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 60px;
+    opacity: 1;
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .text h3 {
+    font-size: 1.125rem; /* немного меньше */
+  }
+
+  .text p {
+    font-size: 0.95rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2.25rem;
+  }
+}
