@@ -1,4 +1,4 @@
-import styles from "../ResumeHighlights.module.css";
+import styles from "../Resume.module.css";
 import * as Icons from "react-icons/fa";
 
 const ResumeCard = ({ icon, title, description, delay }) => {

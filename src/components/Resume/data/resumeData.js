@@ -1,4 +1,6 @@
-export const resumeHighlightsData = [
+// src/components/Resume/data/resumeData.js
+
+export const resumeData = [
   {
     icon: "FaCode",
     title: "Frontend Development",
