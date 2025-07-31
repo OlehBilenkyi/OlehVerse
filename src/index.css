@@ -1,17 +1,12 @@
 /* ==========================================================================
-   src/index.css — глобальные стили
+   src/index.css — Глобальные стили проекта OlehVerse
    ========================================================================== */
 
 /* —————————————————————————————
-   1. Цветовая палитра & типографика
+   1. Цветовая палитра, шрифты и переменные
    ————————————————————————————— */
 :root {
-  --bg-unified: linear-gradient(
-    135deg,
-    #eef2f3cc,
-    #dfe9f3cc
-  ); /* 🟣 Прозрачный градиент */
-  /* Основные цвета */
+  /* Цвета */
   --color-primary: #1a73e8;
   --color-secondary: #ff6d00;
   --color-accent: #34a853;
@@ -20,13 +15,12 @@
   --color-muted: #5f6368;
 
   /* Фоны */
+  --bg-unified: linear-gradient(135deg, #eef2f3cc, #dfe9f3cc);
   --bg-page: var(--color-light);
   --bg-section: #ffffff;
 
-  /* Шрифты */
+  /* Типографика */
   --font-sans: "Montserrat", sans-serif;
-
-  /* Текст */
   --fs-sm: 0.875rem;
   --fs-md: 1rem;
   --fs-lg: 1.25rem;
@@ -37,17 +31,17 @@
   --spacer: 1rem;
   --gutter: 1.5rem;
 
-  /* Транзишны */
+  /* Анимации */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --speed-fast: 0.2s;
   --speed: 0.6s;
 
-  /* Z-индекс модалок */
+  /* Z-индексы */
   --z-modal: 1000;
 }
 
 /* —————————————————————————————
-   2. Сброс и базовые
+   2. Reset + базовые
    ————————————————————————————— */
 *,
 *::before,
@@ -57,17 +51,17 @@
   padding: 0;
 }
 
-html {
+html,
+body {
+  height: 100%;
   font-family: var(--font-sans);
   font-size: 16px;
   background: var(--bg-page);
   color: var(--color-dark);
   scroll-behavior: smooth;
-}
-
-body {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
   line-height: 1.6;
-  animation: slideFromTop 0.8s ease-out;
 }
 
 img {
@@ -85,24 +79,38 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* контейнер */
+/* —————————————————————————————
+   3. Контейнер и секции
+   ————————————————————————————— */
 .container {
   width: min(100% - 2 * var(--gutter), 1200px);
   margin: 0 auto;
   padding: var(--gutter) 0;
 }
 
-/* секция */
+main {
+  scroll-snap-type: y mandatory;
+}
+
 section {
   background: var(--bg-unified);
   padding: calc(var(--spacer) * 4) 0;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* заголовок секции */
+/* —————————————————————————————
+   4. Заголовки секций
+   ————————————————————————————— */
 .section-header {
   text-align: center;
   margin-bottom: calc(var(--spacer) * 2);
+  padding: 0 var(--gutter);
 }
 
 .section-header p {
@@ -129,7 +137,9 @@ section {
   margin: var(--spacer) auto 0;
 }
 
-/* кнопки */
+/* —————————————————————————————
+   5. Кнопки
+   ————————————————————————————— */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -151,7 +161,6 @@ section {
   color: var(--color-primary);
 }
 .btn:hover {
-  /* при наведении делаем зеркальный градиент как в Navbar */
   background: linear-gradient(
     90deg,
     var(--color-secondary),
@@ -169,18 +178,9 @@ section {
   transform: translateY(-3px) scale(1.05);
 }
 
-/* утилиты */
-.text-center {
-  text-align: center;
-}
-.mt-2 {
-  margin-top: calc(var(--spacer) * 2);
-}
-.mb-2 {
-  margin-bottom: calc(var(--spacer) * 2);
-}
-
-/* анимации */
+/* —————————————————————————————
+   6. Анимации (WOW / AOS / custom)
+   ————————————————————————————— */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -232,6 +232,10 @@ section {
   }
 }
 
+body {
+  animation: slideFromTop 0.8s ease-out;
+}
+
 .wow {
   opacity: 0;
 }
@@ -246,4 +250,49 @@ section {
 }
 .wow.zoomIn {
   animation: zoomIn var(--speed) var(--ease) forwards;
+}
+
+/* —————————————————————————————
+   7. Утилиты
+   ————————————————————————————— */
+.text-center {
+  text-align: center;
+}
+.mt-2 {
+  margin-top: calc(var(--spacer) * 2);
+}
+.mb-2 {
+  margin-bottom: calc(var(--spacer) * 2);
+}
+
+/* —————————————————————————————
+   8. Адаптивность
+   ————————————————————————————— */
+@media (max-width: 1024px) {
+  .section-header h2 {
+    font-size: 2.25rem;
+  }
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 1.75rem;
+  }
+  section {
+    padding: calc(var(--spacer) * 2) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
 }
