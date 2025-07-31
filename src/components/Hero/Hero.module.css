@@ -1,15 +1,16 @@
-.hero {
+.heroSection {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
-  
-  background: none;
-  padding: 0;
+  background: var(--bg-unified);
+  padding: var(--gutter);
+  scroll-snap-align: start;
 }
 
-.parallaxLayer {
+.heroParallaxLayer {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,29 +19,35 @@
   background: url("/img/particles.svg") center/cover no-repeat;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.15;
 }
 
-.inner {
+.heroContentWrapper {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1280px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
-.left,
-.right {
-  flex: 1 1 50%;
-  padding: 1rem;
+.heroTextBlock {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
 }
 
-.heroText p {
+.heroTextBlock p {
   font-size: var(--fs-md);
   color: var(--color-secondary);
   margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .gradientText {
@@ -67,73 +74,68 @@
   }
 }
 
-.typed {
+.heroTyped {
   display: inline-block;
   font-size: var(--fs-lg);
   color: var(--color-primary);
-  margin-bottom: 1.5rem;
   line-height: 1.3em;
   white-space: nowrap;
-  vertical-align: top;
-
-  /* 🛠 фикс дергания текста */
   min-height: 1.3em;
   position: relative;
+  text-align: left;
 }
 
-.heroBtn {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.heroButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 400px;
 }
 
-.heroBtn a,
-.heroBtn button {
-  padding: 0.75rem 1.5rem;
-  font-size: var(--fs-md);
+/* Глобальные стили кнопок */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem; /* Уменьшенные отступы */
+  font-size: 0.95rem;
   font-weight: 600;
+  border: 2px solid #000;
   border-radius: 50px;
   background: linear-gradient(
-    45deg,
-    var(--color-primary),
-    var(--color-secondary)
+    90deg,
+    rgba(26, 115, 232, 0.9),
+    rgba(255, 109, 0, 0.9)
   );
-  background-size: 200% 200%;
   color: #fff;
-  text-decoration: none;
-  border: none;
+  text-align: center;
   cursor: pointer;
-  transition: background-position 0.5s var(--ease), transform 0.3s var(--ease);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.heroBtn a:hover,
-.heroBtn button:hover {
-  background-position: 100% 0;
-  transform: translateY(-4px) scale(1.05);
-}
-
-.cvBtn {
+.btn:hover {
   background: linear-gradient(
-    45deg,
-    var(--color-secondary),
-    var(--color-primary)
+    90deg,
+    rgba(255, 109, 0, 0.9),
+    rgba(26, 115, 232, 0.9)
   );
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.downloadBtn {
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  transition: all 0.3s var(--ease);
+@media (max-width: 480px) {
+  .heroButtons {
+    grid-template-columns: 1fr;
+  }
 }
 
-.downloadBtn:hover {
-  background: linear-gradient(
-    45deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  color: #fff;
+.heroImageBlock {
+  flex: 1 1 48%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .heroImage {
@@ -141,12 +143,18 @@
   max-width: 100%;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.heroImage:hover {
+  transform: scale(1.03);
 }
 
 .modalFooter {
   text-align: center;
   margin-top: 1rem;
 }
+
 :global(.typed-cursor) {
   display: inline-block;
   margin-left: 4px;
@@ -179,5 +187,31 @@
   63%,
   63.999% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContentWrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .heroTextBlock,
+  .heroImageBlock {
+    flex: 1 1 100%;
+    padding: 0;
+  }
+
+  .heroTyped {
+    text-align: center;
+  }
+
+  .heroButtons {
+    justify-content: center;
+  }
+
+  .gradientText {
+    font-size: var(--fs-xl);
   }
 }

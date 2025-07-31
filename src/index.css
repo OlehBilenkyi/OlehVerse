@@ -6,12 +6,7 @@
    1. Цветовая палитра & типографика
    ————————————————————————————— */
 :root {
-  --bg-unified: linear-gradient(
-    135deg,
-    #eef2f3cc,
-    #dfe9f3cc
-  ); /* 🟣 Прозрачный градиент */
-  /* Основные цвета */
+  --bg-unified: linear-gradient(135deg, #eef2f3cc, #dfe9f3cc);
   --color-primary: #1a73e8;
   --color-secondary: #ff6d00;
   --color-accent: #34a853;
@@ -19,31 +14,76 @@
   --color-dark: #202124;
   --color-muted: #5f6368;
 
-  /* Фоны */
   --bg-page: var(--color-light);
   --bg-section: #ffffff;
 
-  /* Шрифты */
   --font-sans: "Montserrat", sans-serif;
 
-  /* Текст */
   --fs-sm: 0.875rem;
   --fs-md: 1rem;
   --fs-lg: 1.25rem;
   --fs-xl: 2rem;
   --fs-xxl: 3rem;
 
-  /* Отступы */
   --spacer: 1rem;
   --gutter: 1.5rem;
 
-  /* Транзишны */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --speed-fast: 0.2s;
   --speed: 0.6s;
 
-  /* Z-индекс модалок */
   --z-modal: 1000;
+}
+
+/* кнопки */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(26, 115, 232, 0.9),
+    rgba(255, 109, 0, 0.9)
+  );
+  color: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: background var(--speed-fast) var(--ease),
+    transform var(--speed-fast) var(--ease),
+    box-shadow var(--speed-fast) var(--ease);
+}
+
+.btn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 109, 0, 0.9),
+    rgba(26, 115, 232, 0.9)
+  );
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 10px rgba(26, 115, 232, 0.5);
+}
+
+/* обводочная кнопка */
+.btn--outline {
+  background: transparent;
+  color: rgba(26, 115, 232, 0.9);
+  border: 2px solid rgba(26, 115, 232, 0.9);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.btn--outline:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 109, 0, 0.9),
+    rgba(26, 115, 232, 0.9)
+  );
+  color: #fff;
+  border: 2px solid #000;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 10px rgba(26, 115, 232, 0.5);
 }
 
 /* —————————————————————————————
@@ -85,21 +125,18 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* контейнер */
 .container {
   width: min(100% - 2 * var(--gutter), 1200px);
   margin: 0 auto;
   padding: var(--gutter) 0;
 }
 
-/* секция */
 section {
   background: var(--bg-unified);
   padding: calc(var(--spacer) * 4) 0;
   position: relative;
 }
 
-/* заголовок секции */
 .section-header {
   text-align: center;
   margin-bottom: calc(var(--spacer) * 2);
@@ -129,58 +166,19 @@ section {
   margin: var(--spacer) auto 0;
 }
 
-/* кнопки */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-size: var(--fs-md);
-  font-weight: 600;
-  border-radius: 50px;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  color: #fff;
-  transition: background var(--speed-fast) var(--ease),
-    transform var(--speed-fast) var(--ease);
-}
-.btn--outline {
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-}
-.btn:hover {
-  /* при наведении делаем зеркальный градиент как в Navbar */
-  background: linear-gradient(
-    90deg,
-    var(--color-secondary),
-    var(--color-primary)
-  );
-  transform: translateY(-3px) scale(1.05);
-}
-.btn--outline:hover {
-  background: linear-gradient(
-    90deg,
-    var(--color-secondary),
-    var(--color-primary)
-  );
-  color: #fff;
-  transform: translateY(-3px) scale(1.05);
-}
 
-/* утилиты */
 .text-center {
   text-align: center;
 }
+
 .mt-2 {
   margin-top: calc(var(--spacer) * 2);
 }
+
 .mb-2 {
   margin-bottom: calc(var(--spacer) * 2);
 }
 
-/* анимации */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -191,6 +189,7 @@ section {
     transform: translateY(0);
   }
 }
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -201,6 +200,7 @@ section {
     transform: translateX(0);
   }
 }
+
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -211,6 +211,7 @@ section {
     transform: translateX(0);
   }
 }
+
 @keyframes zoomIn {
   from {
     opacity: 0;
@@ -221,6 +222,7 @@ section {
     transform: scale(1);
   }
 }
+
 @keyframes slideFromTop {
   from {
     opacity: 0;
@@ -235,15 +237,19 @@ section {
 .wow {
   opacity: 0;
 }
+
 .wow.fadeInUp {
   animation: fadeInUp var(--speed) var(--ease) forwards;
 }
+
 .wow.fadeInLeft {
   animation: fadeInLeft var(--speed) var(--ease) forwards;
 }
+
 .wow.fadeInRight {
   animation: fadeInRight var(--speed) var(--ease) forwards;
 }
+
 .wow.zoomIn {
   animation: zoomIn var(--speed) var(--ease) forwards;
 }

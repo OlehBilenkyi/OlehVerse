@@ -11,10 +11,10 @@ const About = () => {
   const [ref, inView] = useInView(0.3);
 
   return (
-    <section className={styles.about} id="about" ref={ref}>
-      <div className={styles.decorative} />
+    <section className={styles.aboutSection} id="about" ref={ref}>
+      <div className={styles.aboutDecorative} />
       <div className="container">
-        <div className={styles.row}>
+        <div className={styles.aboutRow}>
           <AboutImage />
           <div
             className={`${styles.aboutContent} ${inView ? styles.show : ""}`}

@@ -7,12 +7,13 @@ import { useParallax } from "./hooks/useParallax";
 
 const Hero = () => {
   const [resumeOpen, setResumeOpen] = useState(false);
-  useParallax(`.${styles.parallaxLayer}`);
+
+  useParallax(`.${styles.heroParallaxLayer}`);
 
   return (
-    <section id="home" className={styles.hero}>
-      <div className={styles.parallaxLayer} data-speed="0.3" />
-      <div className={styles.inner}>
+    <section id="home" className={styles.heroSection}>
+      <div className={styles.heroParallaxLayer} data-speed="0.3" />
+      <div className={styles.heroContentWrapper}>
         <HeroText onShowResume={() => setResumeOpen(true)} />
         <HeroImage />
       </div>

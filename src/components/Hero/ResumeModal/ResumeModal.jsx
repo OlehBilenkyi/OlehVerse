@@ -23,6 +23,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
             Download PDF
           </a>
           <button
+            type="button"
             className={styles.closeBtn}
             onClick={onClose}
             aria-label="Close modal"
@@ -38,6 +39,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
           src={`${import.meta.env.BASE_URL}resume/Oleh-Bilenkyi-CV.pdf`}
           title="CV"
           onLoad={() => setLoading(false)}
+          loading="lazy"
         />
       </div>
 

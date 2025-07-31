@@ -1,11 +1,13 @@
-.aboutImg {
+/* About.module.css */
+
+.aboutImageWrapper {
   position: relative;
   flex: 1 1 50%;
   padding: var(--gutter);
   text-align: center;
 }
 
-.iframeWrapper {
+.aboutGithubLink {
   display: block;
   width: 100%;
   max-width: 400px;
@@ -14,11 +16,10 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  text-decoration: none;
 }
 
-.githubPreview {
-  background-image: url("/img/github-preview.png"); /* скриншот твоей страницы */
+.aboutGithubPreview {
+  background-image: url("/img/github-preview.png");
   background-size: cover;
   background-position: top;
   width: 100%;
@@ -26,11 +27,11 @@
   transition: background-position 2s ease;
 }
 
-.iframeWrapper:hover .githubPreview {
+.aboutGithubLink:hover .aboutGithubPreview {
   background-position: bottom;
 }
 
-.overlay {
+.aboutOverlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -41,4 +42,9 @@
   text-align: center;
   padding: 1rem;
   pointer-events: none;
+}
+
+/* Точка улучшения: класс previewImage отсутствует в CSS, но используется — можно добавить: */
+.previewImage {
+  display: none; /* или удалить этот img, если не нужен, т.к. уже есть background-image */
 }

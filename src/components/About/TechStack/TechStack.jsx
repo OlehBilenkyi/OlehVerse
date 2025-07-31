@@ -3,9 +3,9 @@ import styles from "../About.module.css";
 import { FaReact, FaHtml5, FaGithub, FaDatabase } from "react-icons/fa";
 
 const TechStack = () => (
-  <div className={styles.techStack}>
+  <div className={styles.aboutTechStack}>
     <p>Tech Stack:</p>
-    <div className={styles.icons}>
+    <div className={styles.aboutTechIcons}>
       <FaReact />
       <FaHtml5 />
       <FaGithub />

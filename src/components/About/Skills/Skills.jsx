@@ -21,7 +21,7 @@ const skills = [
 ];
 
 const Skills = ({ inView }) => (
-  <div className={styles.skills}>
+  <div className={styles.aboutSkills}>
     {skills.map((skill, i) => (
       <SkillBar key={i} {...skill} animate={inView} />
     ))}
